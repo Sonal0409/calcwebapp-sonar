@@ -1,5 +1,5 @@
-def call(String repourl) {
+def call(String branchName, String repourl) {
 
-git "${repourl}"
+git branch: "${branchName}, url: "${repourl}"
 
 }
