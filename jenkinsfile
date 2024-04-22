@@ -1,0 +1,40 @@
+pipeline{
+    
+    tools{
+        maven 'mymaven'
+    }
+   // in agent any = any available server 
+    agent any
+   stages{
+       stage('Clone a Repo'){
+           steps{
+               git 'https://github.com/Sonal0409/DevOpsCodeDemo.git'
+           }
+       }
+       
+       stage('Compile the code'){
+           steps{
+               sh 'mvn compile'
+           }
+       }
+       
+       stage('CodeReview'){
+           steps{
+               sh 'mvn pmd:pmd'
+           }
+       }
+       
+       stage('Unit Test'){
+           steps{
+               sh 'mvn test'
+           }
+       }
+       
+       stage('Package'){
+           steps{
+               sh 'mvn clean install package'
+           }
+       }
+       }
+}
+
