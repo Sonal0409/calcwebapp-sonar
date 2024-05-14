@@ -3,7 +3,7 @@ pipeline{
     tools{
         maven 'mymaven'
     }
-   // in agent any = any available server 
+   // in agent any = any available server and new server for change
     agent any
    stages{
        stage('Clone a Repo'){
